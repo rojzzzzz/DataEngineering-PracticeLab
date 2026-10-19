@@ -22,7 +22,7 @@
     "codemirror": "^6.0.2",
     "html-to-image": "1.11.11",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@streamlit/component-v2-lib": "^0.2.0",
