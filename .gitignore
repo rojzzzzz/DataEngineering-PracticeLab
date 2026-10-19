@@ -1,0 +1,53 @@
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.py[cod]
+node_modules/
+.runtime-deps/
+.test-runtime/
+.coverage
+htmlcov/
+.ruff_cache/
+*.egg-info/
+
+# Credentials and machine-local configuration (keep example files shareable).
+.env
+.env.*
+!.env.example
+!.env.*.example
+.streamlit/secrets.toml
+*.pem
+*.key
+
+# Personal progress, uploaded banks and recovery copies.
+database/*
+data/imports/
+data/versions/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+
+# Local editor and design-review state.
+.idea/
+.vscode/
+.impeccable/
+.DS_Store
+Thumbs.db
+*.log
+
+.python-runner/
+
+# Disposable benchmarks, previews and local investigation artifacts.
+tmp/
+
+# SQL-tools JavaScript is published under static/ by the frontend build.
+src/sql_tools_assets/editor.js
+src/sql_tools_assets/chunks/
+
+# Local challenge-bank installation locks and recovery journals.
+.*.install.lock
+.*.install/

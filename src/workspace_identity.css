@@ -1,0 +1,42 @@
+/* Applied after the bundled styles in each component's shadow root.
+   Keep tool-specific colors and internal layouts; share notebook geometry. */
+:is(.erd-editor, .sql-workspace, .python-workspace, .pipeline-designer, .sut) {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 12px;
+  box-shadow: none;
+}
+:is(.erd-editor, .sql-workspace, .python-workspace) button {
+  min-height: 44px;
+  border-radius: 8px;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+:is(.erd-editor, .sql-workspace, .python-workspace) :is(input, select, textarea) {
+  border-radius: 8px;
+}
+:is(.sql-workspace, .python-workspace) .cm-scroller,
+:is(.sql-workspace, .python-workspace) .cm-content,
+.python-filebar strong {
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.sql-tabs button { border-radius: 0; }
+.sql-toolbar span, .sql-footnote, .sql-editor-label,
+.python-runtime, .python-caption { font-size: 13px; line-height: 1.5; }
+/* Constructor tools use studio chrome; embedded Practice diagrams keep
+   the notebook frame above. Tool-specific drawing and status colors survive. */
+.erd-workspace, .pipeline-designer, .sut { border-radius:6px; box-shadow:none; }
+.erd-workspace .erd-toolbar, .pipeline-designer .pipeline-toolbar { padding:10px 16px; gap:8px; }
+.erd-workspace .erd-brand strong { font-size:15px; font-weight:600; }
+.erd-workspace .erd-brand small { font-size:12px; }
+.erd-workspace .erd-toolbar button { border-radius:4px; }
+.erd-workspace .erd-panel { width:280px; padding:16px; }
+.sut { padding:16px; }
+@container (max-width:530px) {
+  .erd-workspace .erd-panel { width:100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.erd-editor, .sql-workspace, .python-workspace) button { transition: none; }
+}

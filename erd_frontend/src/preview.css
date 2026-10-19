@@ -1,0 +1,40 @@
+.submission-preview {
+  min-width: 0;
+  color: #263b4b;
+  font:
+    13px/1.5 "Segoe UI",
+    system-ui,
+    sans-serif;
+}
+.submission-preview .preview-action {
+  cursor: pointer;
+  font: inherit;
+  background: #fff;
+  color: #355264;
+  border: 1px solid #ccdcd5;
+  border-radius: 7px;
+  padding: 7px 10px;
+  margin-bottom: 8px;
+}
+.submission-preview .preview-action:hover {
+  background: #edf5f3;
+  border-color: #9ac4bc;
+}
+.submission-preview .preview-action:focus-visible {
+  outline: 2px solid #15988b;
+  outline-offset: 2px;
+}
+.submission-preview dialog {
+  box-sizing: border-box;
+  border: 1px solid #ccdcd5;
+  border-radius: 12px;
+  padding: 16px;
+  color: inherit;
+  background: #fff;
+}
+.submission-preview dialog::backdrop {
+  background: #172a3670;
+}
+.submission-preview .react-flow__handle {
+  opacity: 0;
+}

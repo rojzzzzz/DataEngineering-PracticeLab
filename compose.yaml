@@ -1,0 +1,23 @@
+services:
+  practice-lab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: data-engineering-practice-lab:local
+    container_name: data-engineering-practice-lab
+    ports:
+      - "127.0.0.1:8501:8501"
+    volumes:
+      - practice_data:/app/database
+      - challenge_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+volumes:
+  practice_data:
+  challenge_data:
