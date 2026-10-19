@@ -2,6 +2,6 @@ streamlit>=1.51,<2
 pytest>=8,<10
 duckdb==1.5.5
 sqlglot==30.21.0
-Faker==40.39.0
+Faker==40.43.0
 pytz==2025.2
 shandy-sqlfmt==0.32.0
