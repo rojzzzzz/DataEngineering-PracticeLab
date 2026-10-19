@@ -1,0 +1,170 @@
+[
+  {
+    "id": "scope",
+    "label": "Extraction scope",
+    "help": "How much source data is read on each run.",
+    "kinds": ["source", "ingestion"],
+    "options": [
+      ["full", "Full Load", ""],
+      ["incremental", "Incremental Load", ""],
+      ["snapshot", "Snapshot", ""],
+      ["backfill", "Backfill", ""]
+    ]
+  },
+  {
+    "id": "access",
+    "label": "Source access",
+    "help": "How data is obtained from the source.",
+    "kinds": ["source", "ingestion"],
+    "options": [
+      ["api", "API Pull (REST/GraphQL)", "REST GraphQL"],
+      ["query", "Database Query Pull", "SELECT"],
+      ["cdc", "CDC (Change Data Capture)", "Debezium WAL"],
+      ["logs", "Log-based Extraction", "binlog redo oplog"],
+      ["file", "File Drop / SFTP", ""],
+      ["saas", "SaaS Connector", "Fivetran Airbyte"],
+      ["replay", "Event Sourcing Replay", ""],
+      ["queue", "Message Queue Drain", "SQS RabbitMQ"]
+    ]
+  },
+  {
+    "id": "mechanism",
+    "label": "Extraction mechanism",
+    "help": "For example, CDC may read database logs or use a source connector.",
+    "kinds": ["source", "ingestion"],
+    "options": [
+      ["logs", "Log-based Extraction", "WAL binlog redo oplog"],
+      ["connector", "SaaS Connector", "managed connector"],
+      ["query", "Database Query Pull", ""]
+    ]
+  },
+  {
+    "id": "delivery",
+    "label": "Delivery",
+    "help": "How new data arrives.",
+    "kinds": ["source", "ingestion"],
+    "options": [
+      ["polling", "Polling", ""],
+      ["webhooks", "Webhooks", ""],
+      ["stream", "Streaming - Kafka/Kinesis", "event stream"]
+    ]
+  },
+  {
+    "id": "trigger",
+    "label": "Trigger",
+    "help": "When this component runs.",
+    "kinds": [],
+    "options": [
+      ["manual", "Manual", ""],
+      ["scheduled", "Scheduled", "schedule"],
+      ["event", "Event-driven", ""]
+    ]
+  },
+  {
+    "id": "pagination",
+    "label": "Pagination",
+    "help": "How a multi-page source is traversed.",
+    "kinds": ["source", "ingestion"],
+    "options": [
+      ["offset", "Pagination - Offset/Limit", "offset limit"],
+      ["page", "Pagination - Page/Size", "page_size"],
+      ["cursor", "Pagination - Cursor", "cursor token"],
+      ["keyset", "Pagination - Keyset", "seek last_id"],
+      ["link", "Pagination - Link Header", "next prev"]
+    ]
+  },
+  {
+    "id": "write",
+    "label": "Write strategy",
+    "help": "How incoming records change destination data.",
+    "kinds": ["storage", "destination", "transformation"],
+    "options": [
+      ["append", "INSERT / APPEND", "INSERT APPEND"],
+      ["merge", "UPSERT / MERGE", "MERGE (SQL MERGE)"],
+      ["overwrite", "OVERWRITE (Full Replace)", ""],
+      ["truncate", "TRUNCATE + INSERT", ""],
+      ["delete-insert", "DELETE + INSERT", ""],
+      ["insert-overwrite", "INSERT OVERWRITE", ""],
+      ["partition", "Partition Replace", ""]
+    ]
+  },
+  {
+    "id": "history",
+    "label": "History strategy",
+    "help": "Describe slowly changing dimension behavior independently of loading.",
+    "kinds": ["storage", "destination", "transformation"],
+    "options": [
+      ["scd1", "SCD Type 1", ""],
+      ["scd2", "SCD Type 2", ""],
+      ["scd3", "SCD Type 3", ""],
+      ["scd6", "SCD Type 6", ""]
+    ]
+  },
+  {
+    "id": "deletion",
+    "label": "Delete handling",
+    "help": "What happens when a source record is deleted.",
+    "kinds": ["storage", "destination", "transformation"],
+    "options": [
+      ["soft", "Upsert with Soft Delete", "soft delete"],
+      ["hard", "Hard Delete", ""],
+      ["ignore", "Retain deleted source records", ""]
+    ]
+  },
+  {
+    "id": "loading",
+    "label": "Loading method",
+    "help": "How records are physically delivered to the destination.",
+    "kinds": ["ingestion", "storage", "destination"],
+    "options": [
+      ["bulk", "Copy / Bulk Load", "COPY INTO LOAD DATA bcp Snowpipe"],
+      ["microbatch", "Micro-batch Write", "Spark Structured Streaming"],
+      ["stream", "Streaming Sink Write", "Flink Kafka Connect sink"]
+    ]
+  },
+  {
+    "id": "publication",
+    "label": "Publication",
+    "help": "When loaded data becomes available to readers.",
+    "kinds": ["storage", "destination", "quality"],
+    "options": [
+      ["swap", "Staging + Swap", "atomic swap"],
+      ["wap", "Write-Audit-Publish (WAP)", "validate publish"]
+    ]
+  },
+  {
+    "id": "reliability",
+    "label": "Write reliability",
+    "help": "Describe replay and duplicate handling.",
+    "kinds": ["ingestion", "storage", "destination", "transformation"],
+    "options": [
+      ["idempotent", "Idempotent Write", "key hash"],
+      ["dedup", "Deduplication", "dedupe"],
+      ["dedup-view", "Insert-Only with Dedup View", "dedupe at read time"]
+    ]
+  },
+  {
+    "id": "table",
+    "label": "Table behavior",
+    "help": "Describe table-format-specific writes.",
+    "kinds": ["storage", "destination", "transformation"],
+    "options": [
+      ["delta", "Delta Merge", "Delta Lake MERGE"],
+      ["iceberg", "Iceberg Merge / Upsert", "Iceberg MERGE"],
+      ["hudi", "Hudi Upsert", "COW MOR"],
+      ["versioned", "Time-Travel Append", "versioned append Delta Iceberg Hudi"]
+    ]
+  },
+  {
+    "id": "maintenance",
+    "label": "Storage maintenance",
+    "help": "Maintenance is independent of the logical write strategy.",
+    "kinds": ["storage", "destination"],
+    "options": [
+      ["compaction", "Compaction Write", "merge small files"],
+      ["zorder", "Z-Order", "Z-Order / Optimize Write Databricks"],
+      ["optimize", "Optimize Write", "Z-Order / Optimize Write"],
+      ["both", "Z-Order / Optimize Write", ""]
+    ]
+  }
+]

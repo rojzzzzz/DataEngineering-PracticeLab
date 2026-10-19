@@ -1,0 +1,41 @@
+# Optional Python execution service. First run scripts/setup_python_runner.py.
+services:
+  practice-lab:
+    environment:
+      PYTHON_RUNNER_URL: http://python-runner:8766
+    env_file:
+      - ./.python-runner/compose.env
+    networks:
+      - default
+      - python_control
+    depends_on:
+      python-runner:
+        condition: service_healthy
+
+  python-runner:
+    build:
+      context: .
+      dockerfile: runner/Controller.Dockerfile
+    image: study-helper-python-controller:local
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - ./.python-runner/compose.env
+    networks:
+      - python_control
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    restart: unless-stopped
+    stop_grace_period: 30s
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import Request,urlopen; import os,json; r=urlopen(Request('http://127.0.0.1:8766/health',headers={'Authorization':'Bearer '+os.environ['PYTHON_RUNNER_TOKEN']})); assert json.load(r)['ready']"]
+      interval: 10s
+      timeout: 8s
+      start_period: 10s
+      retries: 3
+
+networks:
+  python_control:
+    internal: true
+
