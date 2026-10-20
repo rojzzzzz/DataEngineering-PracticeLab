@@ -119,8 +119,8 @@ Review the prompt before sending it. Responses remain suggestions or drafts: you
 Download the repository ZIP and extract it, or clone it:
 
 ```sh
-git clone https://github.com/rojzzzzz/Data-Engineering-Practice-Lab.git
-cd Data-Engineering-Practice-Lab
+git clone https://github.com/rojzzzzz/DataEngineering-PracticeLab.git
+cd DataEngineering-PracticeLab
 ```
 
 Choose **Docker** for a containerized installation, or **Python** for a lightweight local setup. Both open the same app. The first installation needs internet to download dependencies; normal use does not require Node.js.
